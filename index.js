@@ -5,11 +5,13 @@ require("colors")
 const pokemon = require("./routes/pokemon")
 
 const app = express();
-
+const connectDB = require("./dbinit")
+connectDB()
 //middleware
 app.use(express.json());
 app.use(cors());
 app.use("/pokemon", pokemon)
+
 
 app.get("/",(req,res)=>{
     res.send(`API is working, go to http://localhost:${PORT}/pokemon`)
